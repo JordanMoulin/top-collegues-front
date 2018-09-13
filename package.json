@@ -2,9 +2,9 @@
   "name": "top-collegues-front",
   "version": "0.0.0",
   "scripts": {
+    "build": "ng build --prod --base-href https://JordanMoulin.github.io/top-collegues-front/",
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
