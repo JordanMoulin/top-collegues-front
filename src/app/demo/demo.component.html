@@ -1,0 +1,13 @@
+<div class="row" style="margin-bottom: 20px">
+    <div class="col">
+        <app-bandeau></app-bandeau>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <app-collegue (avis)=afficherAvis($event)></app-collegue>
+    </div>
+</div>
+{{avis}}
