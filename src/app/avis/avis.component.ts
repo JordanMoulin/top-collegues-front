@@ -6,13 +6,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./avis.component.scss']
 })
 export class AvisComponent implements OnInit {
-
   @Output() avis:EventEmitter<string> = new EventEmitter<string>();
-
   constructor() { }
-
-  ngOnInit() {
-  }
 
   quandOnAime() {
     this.avis.emit("Vous avez cliqué sur J'aime");
@@ -21,5 +16,6 @@ export class AvisComponent implements OnInit {
     this.avis.emit("Vous avez cliqué sur Je déteste");
   }
 
-
+  ngOnInit() {
+  }
 }

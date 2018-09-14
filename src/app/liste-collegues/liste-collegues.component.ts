@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Collegue } from '../models';
 
 @Component({
   selector: 'app-liste-collegues',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeColleguesComponent implements OnInit {
 
+  
+  @Input() colleguesTab:Collegue[]
+
   constructor() { }
+
+  
 
   ngOnInit() {
   }

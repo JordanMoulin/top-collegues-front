@@ -3,11 +3,7 @@
         <app-bandeau></app-bandeau>
     </div>
 </div>
-
-
-<div class="row">
-    <div class="col">
-        <app-collegue (avis)=afficherAvis($event)></app-collegue>
-    </div>
+<button type="button" class="btn btn-info">Rafraichir la liste</button>
+<div class="card-deck">
+    <app-liste-collegues [colleguesTab]="collegues"></app-liste-collegues>
 </div>
-{{avis}}

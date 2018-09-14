@@ -8,14 +8,16 @@ import { Collegue } from '../models';
 })
 export class CollegueComponent implements OnInit {
 
-  collegue:Collegue;
+  @Input() collegue:Collegue;
+  @Input() avis:string;
 
-  constructor() { 
-    this.collegue = new Collegue();
-    this.collegue.pseudo = "Flora"
-    this.collegue.score = 666;
+  constructor() {
   }
 
+  afficherAvis(tavis:string){
+    this.avis=tavis;
+  }
+  
   ngOnInit() {
   }
 

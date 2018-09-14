@@ -1,3 +1,7 @@
-<p>
-  liste-collegues works!
-</p>
+<div class="row">
+    <section class="col-4" *ngFor="let col of colleguesTab">
+      <div class="mt-4">
+        <app-collegue [collegue]="col"></app-collegue>
+      </div>
+    </section>
+</div>
