@@ -1,7 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <app-demo></app-demo>
+            <div class="row" style="margin-bottom: 20px">
+                <div class="col">
+                    <app-bandeau></app-bandeau>
+                </div>
+            </div>
+            <button type="button" class="btn btn-info">Rafraichir la liste</button>
+            <div class="card-deck">
+                <app-liste-collegues></app-liste-collegues>
+            </div>
+            <app-historique-votes></app-historique-votes>
         </div>
     </div>
 </div>

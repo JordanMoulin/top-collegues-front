@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-avis',
@@ -7,15 +7,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class AvisComponent implements OnInit {
   @Output() avis:EventEmitter<string> = new EventEmitter<string>();
+  
   constructor() { }
 
   quandOnAime() {
-    this.avis.emit("Vous avez cliqué sur J'aime");
+    this.avis.emit("Aimer");
   }
   quandOnDeteste() {
-    this.avis.emit("Vous avez cliqué sur Je déteste");
+    this.avis.emit("Detester");
   }
-
   ngOnInit() {
   }
 }
