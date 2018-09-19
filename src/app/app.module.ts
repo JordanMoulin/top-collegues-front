@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { BandeauComponent } from './bandeau/bandeau.component';
@@ -12,6 +11,15 @@ import { HistoriqueVotesComponent } from './historique-votes/historique-votes.co
 import { HttpClientModule } from "@angular/common/http";
 import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { RouterModule, Routes } from '@angular/router';
+import { DetailsCollegueComponent } from './details-collegue/details-collegue.component';
+
+const appRoutes: Routes = [
+  { path: 'accueil', component: AccueilComponent }, // /page1 affiche le composant accueil
+  { path: 'demo', component: DemoComponent },  // /demo affiche le composant demo
+  { path: '',   redirectTo: '/accueil', pathMatch: 'full' }, // redirige vers la route accueil par défaut
+  { path: 'collegues/:pseudo', component: DetailsCollegueComponent },
+];
 
 @NgModule({
   declarations: [
@@ -23,12 +31,14 @@ import { AccueilComponent } from './accueil/accueil.component';
     ListeColleguesComponent,
     HistoriqueVotesComponent,
     MenuComponent,
-    AccueilComponent
+    AccueilComponent,
+    DetailsCollegueComponent
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

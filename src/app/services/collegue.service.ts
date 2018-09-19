@@ -14,9 +14,9 @@ export class CollegueService {
 
   listerCollegues():Promise<Collegue[]>  {
     return this._http
-      .get(URL_BACKEND)
+      .get(URL_BACKEND+"collegues/")
       .toPromise()
-      .then((data: any[]) => data.map(d => new Collegue(d.nom, d.score, d.photoUrl)));
+      .then((data: any[]) => data.map(coll => new Collegue(coll.pseudo, coll.nom, coll.prenom, coll.email, coll.adresse,coll.score,coll.photoUrl)));
   }
 
   donnerUnAvis(unCollegue: Collegue, avis: String): Promise<Collegue> {
@@ -27,7 +27,14 @@ export class CollegueService {
         "Content-Type": "application/json"
       })
     };
-    resultat = this._http.patch(URL_BACKEND+unCollegue.pseudo,"{'avis':"+avis+"}", httpOptions).toPromise();
+    resultat = this._http.patch(URL_BACKEND+"collegues/"+unCollegue.pseudo,"{'avis':"+avis+"}", httpOptions).toPromise();
     return resultat;
+  }
+
+  listerUnCollegue(pseudo: String): Promise<Collegue>{
+    return this._http
+      .get(URL_BACKEND+"collegues/"+pseudo)
+      .toPromise()
+      .then((coll: any) => new Collegue(coll.pseudo, coll.nom, coll.prenom, coll.email, coll.adresse,coll.score,coll.photoUrl));
   }
 }

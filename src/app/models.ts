@@ -4,13 +4,21 @@ export enum Avis {
 }
 
 export class Collegue {
-    img: string;
     pseudo: string;
+    nom: string;
+    prenom: string;
+    email: string;
+    adresse: string;
     score: number;
+    img: string;
 
-    constructor(pseudo, score, img) {
+    constructor(pseudo,nom,prenom,email,adresse, score, img) {
         this.img = img;
         this.pseudo = pseudo;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.adresse = adresse;
         this.score = score;
     }
 }

@@ -1,0 +1,15 @@
+<div>
+  <img src="{{collegue.img}}" alt="photo"/>
+  <p>{{collegue.pseudo}}</p>
+  <p>{{collegue.score}}</p>
+</div>
+
+<div>
+  <p>{{collegue.nom}}</p>
+  <p>{{collegue.prenom}}</p>
+  <p>{{collegue.email}}</p>
+  <p>{{collegue.adresse}}</p>
+</div>
+
+<app-avis (avis)=afficherAvis($event)></app-avis>
+<p>{{avis}}</p>
