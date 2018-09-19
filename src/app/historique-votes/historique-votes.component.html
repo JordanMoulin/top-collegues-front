@@ -3,22 +3,3 @@
     <h2>Historique</h2>
   </div>
 </div>
-
-  <div *ngFor="let vote of votes" style="margin-bottom: 10px">
-    <!-- création d'une card -->
-
-    <div class="card">
-      <!-- nom de la card en titre -->
-
-      <div class="row">
-        <div class="col-4">
-          <img class="card-img-top" src="{{vote.collegue.img}}" alt="Card image cap">
-        </div>
-        <div class="col-8">
-          <p class="card-text">{{vote.collegue.pseudo}}</p>
-          <p class="card-text">{{vote.collegue.pseudo}} est {{vote.avis}}, elle a désormais un score de {{vote.collegue.score}} </p>
-          <button type="button" class="btn btn-primary">Supprimer</button>
-        </div>
-      </div>
-    </div>
-  </div>
