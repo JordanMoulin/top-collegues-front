@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+<div class="container">
+  <h1>Ajouter un collegue :</h1>
+  <form (ngSubmit)="submit()">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Matricule</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="monModel.matricule" name="matricule" required #matricule="ngModel">
+        <div *ngIf="matricule.invalid && matricule.touched "> Le matricule est requis</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Pseudo</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="monModel.pseudo" name="pseudo" required #pseudo="ngModel" minlength=2>
+        <div *ngIf="pseudo.invalid && pseudo.touched "> Le pseudo est requis</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">URL image</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="monModel.urlImage" name="urlImage">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <td>
+          <div *ngIf="pseudo.valid && matricule.valid">
+              <input type="submit" value="Ajouter" />
+          </div>
+        </td>
+      </div>
+    </div>
+  </form>
+</div>

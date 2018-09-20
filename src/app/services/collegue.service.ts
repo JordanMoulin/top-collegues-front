@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Collegue,Avis } from '../models';
+import { Collegue,Avis, formCollegue } from '../models';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
@@ -16,7 +16,7 @@ export class CollegueService {
     return this._http
       .get(URL_BACKEND+"collegues/")
       .toPromise()
-      .then((data: any[]) => data.map(coll => new Collegue(coll.pseudo, coll.nom, coll.prenom, coll.email, coll.adresse,coll.score,coll.photoUrl)));
+      .then((data: any[]) => data.map(coll => new Collegue(coll.pseudo, coll.nom, coll.prenom, coll.email, coll.adresse,coll.score,coll.photo)));
   }
 
   donnerUnAvis(unCollegue: Collegue, avis: String): Promise<Collegue> {
@@ -35,6 +35,17 @@ export class CollegueService {
     return this._http
       .get(URL_BACKEND+"collegues/"+pseudo)
       .toPromise()
-      .then((coll: any) => new Collegue(coll.pseudo, coll.nom, coll.prenom, coll.email, coll.adresse,coll.score,coll.photoUrl));
+      .then((coll: any) => new Collegue(coll.pseudo, coll.nom, coll.prenom, coll.email, coll.adresse,coll.score,coll.photo));
+  }
+
+  trouverUnCollegue(monForm: formCollegue){
+    let resultat;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
+    resultat = this._http.post(URL_BACKEND+"collegues/nouveau",monForm , httpOptions).toPromise();
+    return resultat;
   }
 }

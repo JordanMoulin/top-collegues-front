@@ -1,11 +1,13 @@
 <div class="card border-dark text-center">
-    <img class="card-img-top" src="{{collegue.img}}" alt="Card image cap">
+    <img class="card-img-top img-thumbnail" src="{{collegue.img}}">
     <div class="card-body">
         <a class="item" routerLink="/collegues/{{collegue.pseudo}}">{{collegue.pseudo}}</a>
         <p class="card-text">
             <a class="item">{{collegue.score}}</a>
         </p>
     </div>
-    <app-avis (avis)=afficherAvis($event)></app-avis>
-    {{avis}}
+    <div class="card-footer">
+        <app-avis (avis)=afficherAvis($event)></app-avis>
+        {{avis}}
+    </div>
 </div>

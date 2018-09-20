@@ -13,12 +13,16 @@ import { MenuComponent } from './menu/menu.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsCollegueComponent } from './details-collegue/details-collegue.component';
+import { FormsModule }   from '@angular/forms';
+import { AjouterUnCollegueComponent } from './ajouter-un-collegue/ajouter-un-collegue.component';
 
 const appRoutes: Routes = [
   { path: 'accueil', component: AccueilComponent }, // /page1 affiche le composant accueil
   { path: 'demo', component: DemoComponent },  // /demo affiche le composant demo
   { path: '',   redirectTo: '/accueil', pathMatch: 'full' }, // redirige vers la route accueil par défaut
+  { path: 'collegues/nouveau', component: AjouterUnCollegueComponent },
   { path: 'collegues/:pseudo', component: DetailsCollegueComponent },
+ 
 ];
 
 @NgModule({
@@ -32,12 +36,14 @@ const appRoutes: Routes = [
     HistoriqueVotesComponent,
     MenuComponent,
     AccueilComponent,
-    DetailsCollegueComponent
+    DetailsCollegueComponent,
+    AjouterUnCollegueComponent
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

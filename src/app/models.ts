@@ -32,3 +32,9 @@ export class Vote {
         this.collegue = collegue;
     }
 }
+
+export class formCollegue { 
+    matricule: string; 
+    pseudo: string; 
+    urlImage: string;
+  }
