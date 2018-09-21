@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Collegue,Avis, formCollegue } from '../models';
+import { Collegue, Avis, formCollegue } from '../models';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, Subject } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 const URL_BACKEND = environment.backendUrl;
 
@@ -10,42 +12,61 @@ const URL_BACKEND = environment.backendUrl;
 })
 export class CollegueService {
 
-  constructor(private _http: HttpClient) { }
+  private _superBus = new Subject<string>();
 
-  listerCollegues():Promise<Collegue[]>  {
-    return this._http
-      .get(URL_BACKEND+"collegues/")
-      .toPromise()
-      .then((data: any[]) => data.map(coll => new Collegue(coll.pseudo, coll.nom, coll.prenom, coll.email, coll.adresse,coll.score,coll.photo)));
+  get superBus(): Observable<string> {
+    return this._superBus.asObservable();
   }
 
-  donnerUnAvis(unCollegue: Collegue, avis: String): Promise<Collegue> {
-    // TODO Aimer ou Détester un collègue côté serveur
+  constructor(private _http: HttpClient) { }
+
+  listerCollegues(): Observable<Collegue[]> {
+    return this._http
+      .get(URL_BACKEND + "collegues/")
+      .pipe(
+        map((data: any[]) =>
+          data.map(collegue =>
+            new Collegue(collegue.pseudo, collegue.nom, collegue.prenom, collegue.email, collegue.adresse, collegue.score, collegue.photo)
+          )
+        )
+      );
+  }
+
+  donnerUnAvis(unCollegue: Collegue, avis: String): Observable<Collegue> {
+    if(avis === "AIMER"){
+      this._superBus.next(`J'aime ${unCollegue.pseudo}`);
+    }
+    else if(avis === "DETESTER"){
+      this._superBus.next(`Je n'aime pas ${unCollegue.pseudo}`);
+    }
+    
     let resultat;
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
     };
-    resultat = this._http.patch(URL_BACKEND+"collegues/"+unCollegue.pseudo,"{'avis':"+avis+"}", httpOptions).toPromise();
+    resultat = this._http.patch(URL_BACKEND + "collegues/" + unCollegue.pseudo, "{'avis':" + avis + "}", httpOptions);
     return resultat;
   }
 
-  listerUnCollegue(pseudo: String): Promise<Collegue>{
+  listerUnCollegue(pseudo: String): Observable<Collegue> {
     return this._http
-      .get(URL_BACKEND+"collegues/"+pseudo)
-      .toPromise()
-      .then((coll: any) => new Collegue(coll.pseudo, coll.nom, coll.prenom, coll.email, coll.adresse,coll.score,coll.photo));
+      .get(URL_BACKEND + "collegues/" + pseudo)
+      .pipe(
+        map((collegue: any) => new Collegue(collegue.pseudo, collegue.nom, collegue.prenom, collegue.email, collegue.adresse, collegue.score, collegue.photo)
+        )
+      );
   }
 
-  trouverUnCollegue(monForm: formCollegue){
+  trouverUnCollegue(monForm: formCollegue): Observable<Collegue> {
     let resultat;
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
     };
-    resultat = this._http.post(URL_BACKEND+"collegues/nouveau",monForm , httpOptions).toPromise();
+    resultat = this._http.post(URL_BACKEND + "collegues/nouveau", monForm, httpOptions);
     return resultat;
   }
 }

@@ -18,17 +18,28 @@ export class CollegueComponent implements OnInit {
   afficherAvis(tavis: string) {
     this._postSrv
       .donnerUnAvis(this.collegue, tavis.toUpperCase())
-      .then(col => {
+      .subscribe(col => {
         if (tavis === Avis.AIMER) {
           this.collegue.score = col.score
           this.avis = "Vous avez cliqué sur 'J'aime'";
         }
 
-        if (tavis === Avis.DETESTER) {
+        else if (tavis === Avis.DETESTER) {
           this.collegue.score = col.score
           this.avis = "Vous avez cliqué sur 'Je déteste'";
         }
-      });
+      })
+    /* .then(col => {
+       if (tavis === Avis.AIMER) {
+         this.collegue.score = col.score
+         this.avis = "Vous avez cliqué sur 'J'aime'";
+       }
+
+       if (tavis === Avis.DETESTER) {
+         this.collegue.score = col.score
+         this.avis = "Vous avez cliqué sur 'Je déteste'";
+       }
+     });*/
   }
 
   ngOnInit() {

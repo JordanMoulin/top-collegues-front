@@ -10,7 +10,7 @@ export class ScorePipe implements PipeTransform {
       return `<span class="text-danger h2">${value}</span>`;
     }
     else if(value>0){
-      return `<span class="text-success h2">${value}</span>`;
+      return `<span class="text-success h2">+ ${value}</span>`;
     }
     else{
       return `<span class="text-info h2">+ ${value}</span>`;

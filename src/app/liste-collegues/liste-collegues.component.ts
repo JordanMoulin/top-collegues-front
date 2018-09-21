@@ -16,8 +16,16 @@ export class ListeColleguesComponent implements OnInit {
   constructor(private _postSrv: CollegueService) { }
   ngOnInit() {
     this._postSrv
-       .listerCollegues()
-       .then(tabPosts => (this.collegues = tabPosts))
-       .catch(err => (this.err = err));
+      .listerCollegues()
+      .subscribe(
+        tableauCols => this.collegues = tableauCols,
+        errServeur => {
+          if (errServeur.code && errServeur.message) {
+            this.err = errServeur.message;
+          } else {
+            this.err = 'Erreur technique côté serveur';
+          }
+        }
+      );
   }
 }

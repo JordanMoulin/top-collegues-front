@@ -21,7 +21,14 @@ export class AjouterUnCollegueComponent implements OnInit {
   submit() {
     this._postSrv
       .trouverUnCollegue(this.monModel)
-      .then(() => this.router.navigate(['/accueil']))
-      .catch(err => (this.err = err));
+      .subscribe(() => this.router.navigate(['/accueil']),
+        errServeur => {
+          if (errServeur.code && errServeur.message) {
+            this.err = errServeur.message;
+          } else {
+            this.err = 'Erreur technique côté serveur';
+          }
+        }
+      );
   }
 }

@@ -1,15 +1,18 @@
-<div>
-  <img src="{{collegue.img}}" alt="photo"/>
-  <p>{{collegue.pseudo}}</p>
-  <p>{{collegue.score}}</p>
-</div>
+<app-menu></app-menu>
+<div class="text-center">
+  <div>
+    <img src="{{collegue.img}}" alt="photo" />
+    <p>{{collegue.pseudo}}</p>
+    <p>{{collegue.score}}</p>
+  </div>
 
-<div>
-  <p>{{collegue.nom}}</p>
-  <p>{{collegue.prenom}}</p>
-  <p>{{collegue.email}}</p>
-  <p>{{collegue.adresse}}</p>
-</div>
+  <div>
+    <p>{{collegue.nom}}</p>
+    <p>{{collegue.prenom}}</p>
+    <p>{{collegue.email}}</p>
+    <p>{{collegue.adresse}}</p>
+  </div>
 
-<app-avis (avis)=afficherAvis($event)></app-avis>
-<p>{{avis}}</p>
+  <app-avis (avis)=afficherAvis($event)></app-avis>
+  <p>{{avis}}</p>
+</div>
