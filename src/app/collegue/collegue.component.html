@@ -3,7 +3,7 @@
     <div class="card-body">
         <a class="item" routerLink="/collegues/{{collegue.pseudo}}">{{collegue.pseudo}}</a>
         <p class="card-text">
-            <a class="item">{{collegue.score}}</a>
+            <a class="item" [innerHTML]="collegue.score | score"></a>
         </p>
     </div>
     <div class="card-footer">

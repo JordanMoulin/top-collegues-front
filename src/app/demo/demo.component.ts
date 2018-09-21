@@ -9,6 +9,15 @@ import { Collegue } from '../models';
   styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
+
+  characters = [
+    'Finn the human',
+    'Jake the dog',
+    'Princess bubblegum',
+    'Lumpy Space Princess',
+    'Beemo1',
+    'Beemo2'
+  ]
    
    constructor() {}
  
