@@ -9,6 +9,7 @@ import { CollegueService } from '../services/collegue.service';
 })
 export class ListeColleguesComponent implements OnInit {
 
+  searchText: string;
   collegues: Collegue[] = [];
   err: string;
 

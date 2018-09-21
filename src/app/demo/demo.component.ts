@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AvisComponent } from '../avis/avis.component';
-import { Collegue } from '../models';
-
 
 @Component({
   selector: 'app-demo',
@@ -10,15 +7,6 @@ import { Collegue } from '../models';
 })
 export class DemoComponent implements OnInit {
 
-  characters = [
-    'Finn the human',
-    'Jake the dog',
-    'Princess bubblegum',
-    'Lumpy Space Princess',
-    'Beemo1',
-    'Beemo2'
-  ]
-   
    constructor() {}
  
    ngOnInit() {

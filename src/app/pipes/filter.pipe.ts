@@ -12,7 +12,7 @@ export class FilterPipe implements PipeTransform {
     }
     else {
       return items.filter(it => {
-        return it.pseudo.includes(pseudo);
+        return it.pseudo.toLowerCase().includes(pseudo);
       });
     }
   }
